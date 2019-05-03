@@ -3,6 +3,7 @@
   "displayName": "Workspace Default Settings",
   "description": "Keep your workspace settings in sync with a default settings file",
   "version": "0.0.1",
+  "publisher": "dangmai",
   "license": "MIT",
   "engines": {
     "vscode": "^1.33.0"
