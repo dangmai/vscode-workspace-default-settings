@@ -1,0 +1,56 @@
+{
+  "name": "workspace-default-settings",
+  "displayName": "Workspace Default Settings",
+  "description": "Keep your workspace settings in sync with a default settings file",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.33.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "workspace-default-settings.syncSettings",
+        "title": "Workspace Default Settings: Synchronize Settings"
+      }
+    ],
+    "configuration": {
+      "title": "Workspace Default Settings configuration",
+      "properties": {
+        "workspace-default-settings.runOnActivation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether configuration merging should happen at plugin activation."
+        },
+        "workspace-default-settings.jsonIndentation": {
+          "type": "integer",
+          "default": 2,
+          "description": "Number of indentation columns to use when printing out the final configuration JSON."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "prettier": "prettier --write '**/*.{ts,js,json,md}'"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^10.12.21",
+    "prettier": "^1.17.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28"
+  }
+}
