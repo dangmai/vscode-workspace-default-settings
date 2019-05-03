@@ -2,6 +2,10 @@
   "name": "workspace-default-settings",
   "displayName": "Workspace Default Settings",
   "description": "Keep your workspace settings in sync with a default settings file",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dangmai/vscode-workspace-default-settings.git"
+  },
   "version": "0.0.1",
   "publisher": "dangmai",
   "license": "MIT",
