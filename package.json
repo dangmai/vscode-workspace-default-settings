@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/dangmai/vscode-workspace-default-settings.git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "dangmai",
   "license": "MIT",
   "engines": {

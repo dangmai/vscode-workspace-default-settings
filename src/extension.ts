@@ -21,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
       console.log("Not a workspace folder");
       return;
     }
+    let settingsSynced = false;
     await Promise.all(
       vscode.workspace.workspaceFolders.map(async folder => {
         const defaultSettingsFileLocation = path.resolve(
@@ -36,9 +37,6 @@ export function activate(context: vscode.ExtensionContext) {
         );
         const currentSettingsFileExists = await exists(settingsFileLocation);
         if (!defaultSettingsFileExists) {
-          vscode.window.showInformationMessage(
-            "Default Settings File does not exist!"
-          );
           return;
         }
         let currentSettings = {};
@@ -63,10 +61,13 @@ export function activate(context: vscode.ExtensionContext) {
           JSON.stringify(mergedSettings, null, indentation),
           { encoding: "utf8" }
         );
+        settingsSynced = true;
       })
     );
 
-    vscode.window.showInformationMessage("Workspace Settings Synchronized");
+    if (settingsSynced) {
+      vscode.window.showInformationMessage("Workspace Settings Synchronized");
+    }
   });
 
   context.subscriptions.push(disposable);
