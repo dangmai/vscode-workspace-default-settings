@@ -25,11 +25,11 @@ export function activate(context: vscode.ExtensionContext) {
     await Promise.all(
       vscode.workspace.workspaceFolders.map(async folder => {
         const defaultSettingsFileLocation = path.resolve(
-          folder.uri.path,
+          folder.uri.fsPath,
           "./.vscode/settings.default.json"
         );
         const settingsFileLocation = path.resolve(
-          folder.uri.path,
+          folder.uri.fsPath,
           "./.vscode/settings.json"
         );
         const defaultSettingsFileExists = await exists(
