@@ -6,6 +6,8 @@ import { promisify } from "util";
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
+import { parse, ParseError } from "jsonc-parser";
+
 const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -23,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
     let settingsSynced = false;
     await Promise.all(
-      vscode.workspace.workspaceFolders.map(async folder => {
+      vscode.workspace.workspaceFolders.map(async (folder) => {
         const defaultSettingsFileLocation = path.resolve(
           folder.uri.fsPath,
           "./.vscode/settings.default.json"
@@ -41,13 +43,36 @@ export function activate(context: vscode.ExtensionContext) {
         }
         let currentSettings = {};
         if (currentSettingsFileExists) {
-          currentSettings = JSON.parse(
-            await readFile(settingsFileLocation, { encoding: "utf8" })
+          const currentSettingsContent = await readFile(settingsFileLocation, {
+            encoding: "utf8",
+          });
+          const currentSettingsErrors: ParseError[] = [];
+          currentSettings = parse(
+            currentSettingsContent,
+            currentSettingsErrors
+          );
+          if (currentSettingsErrors.length > 0) {
+            throw new Error(
+              "Failed to parse settings.json. Please make sure it contains correct JSON content."
+            );
+          }
+        }
+        const defaultSettingsContent = await readFile(
+          defaultSettingsFileLocation,
+          {
+            encoding: "utf8",
+          }
+        );
+        const defaultSettingsErrors: ParseError[] = [];
+        const defaultSettings = parse(
+          defaultSettingsContent,
+          defaultSettingsErrors
+        );
+        if (defaultSettingsErrors.length > 0) {
+          throw new Error(
+            "Failed to parse settings.default.json. Please make sure it contains correct JSON content."
           );
         }
-        const defaultSettings = JSON.parse(
-          await readFile(defaultSettingsFileLocation, { encoding: "utf8" })
-        );
         const mergedSettings = Object.assign(
           {},
           currentSettings,
