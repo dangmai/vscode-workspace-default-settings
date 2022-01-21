@@ -1,5 +1,6 @@
 {
   "extends": ["config:base"],
+  "ignoreTests": true,
   "assignees": ["dangmai"],
   "packageRules": [
     {
