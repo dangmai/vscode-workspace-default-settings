@@ -1,5 +1,10 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base"],
+  "assignees": ["dangmai"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
   ]
 }
