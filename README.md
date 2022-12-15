@@ -27,8 +27,9 @@ Those changes are easily reverted by running the VSCode command `Workspace Defau
 
 This extension contributes the following settings:
 
-- `workspace-default-settings.runOnActivation`: Whether the plugin will automatically synchronize the settings on activation.
-- `workspace-default-settings.jsonIndentation`: Number of columns for JSON indentation when saving the settings.
+- `workspace-default-settings.runOnActivation`: Whether the plugin will automatically synchronize the settings on activation. Default: `true`.
+- `workspace-default-settings.jsonIndentation`: Number of columns for JSON indentation when saving the settings. Default: `2`.
+- `workspace-default-settings.defaultSettingsFileName`: Name of file that contains the default workspace settings. Default: `settings.default.json`.
 
 ## License
 

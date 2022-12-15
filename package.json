@@ -38,6 +38,11 @@
           "type": "integer",
           "default": 2,
           "description": "Number of indentation columns to use when printing out the final configuration JSON."
+        },
+        "workspace-default-settings.defaultSettingsFileName": {
+          "type": "string",
+          "default": "settings.default.json",
+          "description": "Name of file that contains the default workspace settings."
         }
       }
     }

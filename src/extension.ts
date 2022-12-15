@@ -24,11 +24,15 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
     let settingsSynced = false;
+    const defaultSettingsFileName = vscode.workspace
+      .getConfiguration("workspace-default-settings")
+      .get("defaultSettingsFileName", "settings.default.json");
     await Promise.all(
       vscode.workspace.workspaceFolders.map(async (folder) => {
         const defaultSettingsFileLocation = path.resolve(
           folder.uri.fsPath,
-          "./.vscode/settings.default.json"
+          "./.vscode",
+          defaultSettingsFileName
         );
         const settingsFileLocation = path.resolve(
           folder.uri.fsPath,
