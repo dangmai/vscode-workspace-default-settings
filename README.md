@@ -9,7 +9,7 @@ When you are working in a team, standardizing the toolset is oftentimes a very i
 Out of the box, VSCode allows teams to version control the `settings.json` file to help out with this.
 However, there are a couple of issues with this approach:
 
-- Certain plugins pollude this file by adding their own machine-specific settings in there,
+- Certain plugins pollute this file by adding their own machine-specific settings in there,
   which should not be tracked by a version control system.
 - Sometimes a developer changes a particular settings temporarily,
   and then committed that change by mistake.
