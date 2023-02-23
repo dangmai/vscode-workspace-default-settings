@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.6
+
+- Allow trailing commas in JSON setting files
+
 ## 0.0.5
 
 - Add `defaultSettingsFileName` setting

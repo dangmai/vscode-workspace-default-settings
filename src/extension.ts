@@ -53,7 +53,10 @@ export function activate(context: vscode.ExtensionContext) {
           const currentSettingsErrors: ParseError[] = [];
           currentSettings = parse(
             currentSettingsContent,
-            currentSettingsErrors
+            currentSettingsErrors,
+            {
+              allowTrailingComma: true,
+            }
           );
           if (currentSettingsErrors.length > 0) {
             throw new Error(
@@ -70,7 +73,10 @@ export function activate(context: vscode.ExtensionContext) {
         const defaultSettingsErrors: ParseError[] = [];
         const defaultSettings = parse(
           defaultSettingsContent,
-          defaultSettingsErrors
+          defaultSettingsErrors,
+          {
+            allowTrailingComma: true,
+          }
         );
         if (defaultSettingsErrors.length > 0) {
           throw new Error(
