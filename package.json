@@ -43,6 +43,15 @@
           "type": "string",
           "default": "settings.default.json",
           "description": "Name of file that contains the default workspace settings."
+        },
+        "workspace-default-settings.ignoredPaths": {
+          "type": "array",
+          "default": [],
+          "description": "Allows users to locally ignore synchronization on certain properties. Default: []. Example: [\"editor.rulers\"]",
+          "items": {
+            "type": "string",
+            "title": "settings property paths"
+          }
         }
       }
     }
@@ -58,6 +67,7 @@
   },
   "devDependencies": {
     "@types/glob": "8.1.0",
+    "@types/lodash": "^4.14.202",
     "@types/mocha": "10.0.6",
     "@types/node": "18.19.8",
     "@types/vscode": "1.63.0",
@@ -72,6 +82,7 @@
     "vscode-test": "1.6.1"
   },
   "dependencies": {
-    "jsonc-parser": "3.2.0"
+    "jsonc-parser": "3.2.0",
+    "lodash": "^4.17.21"
   }
 }

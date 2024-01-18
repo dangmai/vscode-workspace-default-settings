@@ -7,6 +7,7 @@ import { promisify } from "util";
 import * as vscode from "vscode";
 
 import { parse, ParseError } from "jsonc-parser";
+import { unset } from "lodash";
 
 const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
@@ -62,6 +63,14 @@ export function activate(context: vscode.ExtensionContext) {
             throw new Error(
               "Failed to parse settings.json. Please make sure it contains correct JSON content."
             );
+          }
+
+          const ignoredPaths: string[] = vscode.workspace
+            .getConfiguration("workspace-default-settings")
+            .get("ignoredPaths", []);
+
+          for (const path of ignoredPaths) {
+            unset(currentSettings, path);
           }
         }
         const defaultSettingsContent = await readFile(
