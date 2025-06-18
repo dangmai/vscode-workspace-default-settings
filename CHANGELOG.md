@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.7
+
+- Tagged version to publish to OpenVSX
+
 ## 0.0.6
 
 - Allow trailing commas in JSON setting files
