@@ -53,20 +53,14 @@
     "watch": "tsc -watch -p ./",
     "pretest": "yarn compile && yarn lint",
     "lint": "biome check",
-    "lint:fix": "biome check --write",
-    "test": "node ./out/test/runTest.js"
+    "lint:fix": "biome check --write"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.10",
-    "@types/glob": "9.0.0",
-    "@types/mocha": "10.0.10",
     "@types/node": "22.19.3",
     "@types/vscode": "1.63.0",
     "@vscode/test-electron": "2.5.2",
-    "glob": "11.1.0",
-    "mocha": "10.8.2",
-    "typescript": "5.9.3",
-    "vscode-test": "1.6.1"
+    "typescript": "5.9.3"
   },
   "dependencies": {
     "jsonc-parser": "3.3.1"
