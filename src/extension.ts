@@ -1,12 +1,11 @@
-import * as fs from "fs";
-import * as path from "path";
-import { promisify } from "util";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { promisify } from "node:util";
 
+import { type ParseError, parse } from "jsonc-parser";
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-
-import { parse, ParseError } from "jsonc-parser";
 
 const exists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
@@ -18,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
-  let disposable = vscode.commands.registerCommand(COMMAND_NAME, async () => {
+  const disposable = vscode.commands.registerCommand(COMMAND_NAME, async () => {
     if (!vscode.workspace.workspaceFolders) {
       console.log("Not a workspace folder");
       return;
@@ -32,14 +31,14 @@ export function activate(context: vscode.ExtensionContext) {
         const defaultSettingsFileLocation = path.resolve(
           folder.uri.fsPath,
           "./.vscode",
-          defaultSettingsFileName
+          defaultSettingsFileName,
         );
         const settingsFileLocation = path.resolve(
           folder.uri.fsPath,
-          "./.vscode/settings.json"
+          "./.vscode/settings.json",
         );
         const defaultSettingsFileExists = await exists(
-          defaultSettingsFileLocation
+          defaultSettingsFileLocation,
         );
         const currentSettingsFileExists = await exists(settingsFileLocation);
         if (!defaultSettingsFileExists) {
@@ -56,11 +55,11 @@ export function activate(context: vscode.ExtensionContext) {
             currentSettingsErrors,
             {
               allowTrailingComma: true,
-            }
+            },
           );
           if (currentSettingsErrors.length > 0) {
             throw new Error(
-              "Failed to parse settings.json. Please make sure it contains correct JSON content."
+              "Failed to parse settings.json. Please make sure it contains correct JSON content.",
             );
           }
         }
@@ -68,7 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
           defaultSettingsFileLocation,
           {
             encoding: "utf8",
-          }
+          },
         );
         const defaultSettingsErrors: ParseError[] = [];
         const defaultSettings = parse(
@@ -76,28 +75,28 @@ export function activate(context: vscode.ExtensionContext) {
           defaultSettingsErrors,
           {
             allowTrailingComma: true,
-          }
+          },
         );
         if (defaultSettingsErrors.length > 0) {
           throw new Error(
-            "Failed to parse settings.default.json. Please make sure it contains correct JSON content."
+            "Failed to parse settings.default.json. Please make sure it contains correct JSON content.",
           );
         }
         const mergedSettings = Object.assign(
           {},
           currentSettings,
-          defaultSettings
+          defaultSettings,
         );
-        let indentation = vscode.workspace
+        const indentation = vscode.workspace
           .getConfiguration("workspace-default-settings")
           .get("jsonIndentation", 2);
         await writeFile(
           settingsFileLocation,
           JSON.stringify(mergedSettings, null, indentation),
-          { encoding: "utf8" }
+          { encoding: "utf8" },
         );
         settingsSynced = true;
-      })
+      }),
     );
 
     if (settingsSynced) {
