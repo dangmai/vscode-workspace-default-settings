@@ -8,7 +8,7 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
-      "**/*.{ts,js,json,md}",
+      "**/*.{ts,js,json,md,yaml}",
       "!node_modules",
       "!out",
       "package.json"
