@@ -1,18 +1,26 @@
 {
-  "extends": ["config:base"],
-  "ignoreTests": true,
-  "assignees": ["dangmai"],
-  "packageRules": [
+  extends: [
+    'config:recommended',
+  ],
+  ignoreTests: true,
+  assignees: [
+    'dangmai',
+  ],
+  packageRules: [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'pin',
+        'digest',
+      ],
+      automerge: true,
     },
     {
-      "matchPackageNames": ["@types/vscode"],
-      // The version of this package has to match with the `engines` field in
-      // `package.json`, otherwise we can't publish the extension. Therefore,
-      // we have to bump this package manually in lock step with `engines`.
-      "enabled": false
-    }
-  ]
+      matchPackageNames: [
+        '@types/vscode',
+      ],
+      enabled: false,
+    },
+  ],
 }
