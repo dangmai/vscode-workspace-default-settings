@@ -51,7 +51,6 @@
     "vscode:prepublish": "yarn compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn compile && yarn lint",
     "lint": "biome check",
     "lint:fix": "biome check --write"
   },
