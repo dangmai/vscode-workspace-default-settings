@@ -1,10 +1,14 @@
 {
   "extends": ["config:recommended"],
   "ignoreTests": true,
+  "automergeType": "branch",
   "assignees": ["dangmai"],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "lockFileMaintenance"],
       "automerge": true
     },
     {
