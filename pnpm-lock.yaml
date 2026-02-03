@@ -16,8 +16,8 @@ importers:
         specifier: 2.3.13
         version: 2.3.13
       '@types/node':
-        specifier: 24.10.9
-        version: 24.10.9
+        specifier: 24.10.10
+        version: 24.10.10
       '@types/vscode':
         specifier: 1.63.0
         version: 1.63.0
@@ -84,8 +84,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@types/node@24.10.9':
-    resolution: {integrity: sha512-ne4A0IpG3+2ETuREInjPNhUGis1SFjv1d5asp8MzEAGtOZeTeHVDOYqOgqfhvseqg/iXty2hjBf1zAOb7RNiNw==}
+  '@types/node@24.10.10':
+    resolution: {integrity: sha512-+0/4J266CBGPUq/ELg7QUHhN25WYjE0wYTPSQJn1xeu8DOlIOPxXxrNGiLmfAWl7HMMgWFWXpt9IDjMWrF5Iow==}
 
   '@types/vscode@1.63.0':
     resolution: {integrity: sha512-iePu1axOi5WSThV6l2TYcciBIpAlMarjBC8H0y8L8ocsZLxh7MttzwFU3pjoItF5fRVGxHS0Hsvje9jO3yJsfw==}
@@ -138,7 +138,7 @@ snapshots:
   '@biomejs/cli-win32-x64@2.3.13':
     optional: true
 
-  '@types/node@24.10.9':
+  '@types/node@24.10.10':
     dependencies:
       undici-types: 7.16.0
 
