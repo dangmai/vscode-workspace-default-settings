@@ -1,0 +1,5 @@
+# renovate.json is actually JSONC (it contains `//` comments). Without an
+# override GitHub highlights it as plain JSON, so the comment lines render as
+# syntax errors. Tell Linguist to treat it as "JSON with Comments" so it
+# highlights correctly on GitHub. Renovate itself parses JSONC config.
+renovate.json linguist-language=JSON-with-Comments

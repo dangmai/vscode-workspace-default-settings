@@ -1,2 +1,10 @@
 [tools]
 node = "24.17.0"
+
+[settings]
+# Wait 3 days before installing a newly released version, matching pnpm's
+# `minimumReleaseAge` (pnpm-workspace.yaml) and Renovate's `minimumReleaseAge`
+# (renovate.json). mise defaults this to 24h. Note this only gates fuzzy version
+# resolution (e.g. `node@24`, `latest`); the pinned version above is unaffected,
+# but keeping the policies aligned avoids surprises for fuzzy installs.
+minimum_release_age = "3d"

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "ignoreTests": true,
+  "automergeType": "branch",
+  "assignees": ["dangmai"],
+  // Wait 3 days after a release before proposing/merging it. This has to stay in
+  // lock step with pnpm's `minimumReleaseAge` (pnpm-workspace.yaml) and mise's
+  // `minimum_release_age` (mise.toml) — otherwise Renovate can land a package in
+  // the lockfile that pnpm's supply-chain check then rejects in CI for being too
+  // new. `internalChecksFilter: "strict"` keeps Renovate from even creating
+  // branches/PRs until the age threshold is met.
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "lockFileMaintenance"
+      ],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["@types/vscode"],
+      // The version of this package has to match with the `engines` field in
+      // `package.json`, otherwise we can't publish the extension. Therefore,
+      // we have to bump this package manually in lock step with `engines`.
+      "enabled": false
+    }
+  ]
+}

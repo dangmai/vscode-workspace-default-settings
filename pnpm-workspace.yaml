@@ -1,0 +1,6 @@
+# Supply-chain policy: don't install a package version until it's at least 3
+# days old (4320 minutes). pnpm v11 defaults this to 1440 (1 day); we bump it to
+# match Renovate's `minimumReleaseAge` (renovate.json) and mise's
+# `minimum_release_age` (mise.toml) so a freshly published package can't land in
+# the lockfile and then fail CI's `pnpm install` supply-chain check.
+minimumReleaseAge: 4320
