@@ -58,7 +58,7 @@
     "@biomejs/biome": "2.5.3",
     "@types/node": "24.13.3",
     "@types/vscode": "1.63.0",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "dependencies": {
     "jsonc-parser": "3.3.1"
