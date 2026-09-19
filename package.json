@@ -55,7 +55,7 @@
     "lint:fix": "biome check --write"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
+    "@biomejs/biome": "2.5.14",
     "@types/node": "24.13.5",
     "@types/vscode": "1.63.0",
     "typescript": "7.0.2"
