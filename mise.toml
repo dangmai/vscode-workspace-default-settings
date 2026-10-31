@@ -1,5 +1,5 @@
 [tools]
-node = "24.22.2"
+node = "26.13.0"
 
 [settings]
 # Wait 3 days before installing a newly released version, matching pnpm's
